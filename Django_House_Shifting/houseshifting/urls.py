@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import handler404
 
 from django.contrib import admin
 from django.urls import path
@@ -28,7 +29,9 @@ urlpatterns = [
     path('qoute/',views.Qoute,name='qoute'),
     path('about/',views.About,name='about'),
     path('blog/',views.Blog,name='blog'),
-    path('service/',views.Service,name='service')
+    path('service/',views.Service,name='service'),
     # path('base',views.Base),
     # path('new',views.New),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'houseshifting.views.error_404'
